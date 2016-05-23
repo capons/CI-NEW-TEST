@@ -1,0 +1,126 @@
+body{
+    font-family: 'Open Sans Condensed';
+    min-width: 387px;
+}
+.no-margin {
+    margin: 0px;
+}
+.no-padding {
+    padding: 0px;
+}
+.image_full_w {
+    max-width: 100%;
+}
+.d_table {
+    display: table;
+}
+.v_elign {
+    display: table-cell;
+    vertical-align: middle;
+}
+.b_full_container {
+    height: 100%;
+    width: 100%;
+}
+.no-border {
+    border:none;
+    outline: none;
+}
+/*Header*/
+.header {
+    background: rgb(247,247,247);
+}
+#basket-wreaper {
+    height: 80px;
+}
+#basket-wreaper ul {
+    height: 100%;
+    display: inline-block;
+    background-color: rgb(238, 238, 238);
+    float: right;
+    width: 132px;
+}
+#basket-wreaper ul li:nth-child(1) {
+    height: 100%;
+    width: 60px;
+}
+#basket-wreaper ul li:nth-child(2) {
+    height: 100%;
+    width: 60px;
+}
+#basket-wreaper ul li:nth-child(3) {
+    height: 100%;
+    width: 140px;;
+}
+#basket-wreaper ul li button{
+    font-family: Roboto;
+    font-weight: 100;
+}
+.w-title {
+    padding: 15px;
+    font-size: 35px;
+    color:black;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+#s-join {
+    font-size: 14px;
+    font-family: roboto;
+}
+#s-sign-in {
+    font-size: 14px;
+    font-family: roboto;
+}
+#s-shop-bag {
+    font-size: 14px;
+    font-family: roboto;
+}
+/* Change the link color on hover */
+#s-join:hover {
+    color:blue;
+}
+#s-sign-in:hover {
+    color:blue;
+}
+#s-shop-bag:hover #s-basket-n {
+    color: blue;
+}
+/* ./hover*/
+#s-basket-n {
+    color:red;
+}
+.nav.navbar-nav li a:hover{
+    color: red;!important;
+}
+.nav.navbar-nav li {
+    background-color: black;!important;
+}
+.nav.navbar-nav li a{
+    color:white;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: red;
+    background: black;
+}
+
+#bs-example-navbar-collapse-1 {
+    border-radius: 0px; !important;
+}
+/* ./header */

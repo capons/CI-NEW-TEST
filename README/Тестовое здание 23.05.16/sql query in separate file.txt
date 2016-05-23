@@ -1,0 +1,19 @@
+To this file I simply add a variable that stores the specific query. So for example, I would add the following variables:
+
+$getAuthors = "SELECT * FROM authors";
+$getBooks = "SELECT * FROM book";
+
+and so on with your queries.
+
+Turning to the page that displays the results — the one that actually uses the query — (lets call it authors.php), I have the include statement:
+
+include "queries.php";
+
+and of course the code to access my database:
+
+link_id = db_connect();
+[here you can use whatever particular code you personally use to connect to a mysql database]
+
+Then I simply populate the $sql variable (where I previously would have stored the actual code of the query), with the following:
+
+$sql = $getAuthors;
