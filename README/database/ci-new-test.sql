@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2016 at 02:23 PM
+-- Generation Time: May 24, 2016 at 03:09 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.2
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `im`
+-- Database: `ci-new-test`
 --
 
 -- --------------------------------------------------------
@@ -28,140 +28,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `authorization` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
   `pass` varchar(255) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
-  `tell` int(255) NOT NULL,
-  `city` text NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `delivery_address` varchar(255) NOT NULL,
-  `payment_method` text NOT NULL,
-  `role` tinyint(10) DEFAULT NULL
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `authorization`
 --
 
-INSERT INTO `authorization` (`id`, `name`, `pass`, `email`, `tell`, `city`, `address`, `delivery_address`, `payment_method`, `role`) VALUES
-(76, 'sdfsdfsdf', 'dssdfdsf', 'adssf@sdfsd.com', 34324234, '', '', '', '', 1),
-(77, 'dfsfsdfdsf', 'dsfsdfsdfdsf', 'sdfdsfd@dsfd.com', 342342343, '', '', '', '', 1),
-(78, 'sdfsfsdf', 'sdfdsfdsf', '23123123@assd.com', 2147483647, '', '', '', '', 1),
-(79, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(82, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(84, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(86, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(87, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(88, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(89, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(90, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(91, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(92, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(93, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(94, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(95, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(96, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(97, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(98, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(99, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(100, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(101, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(102, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(103, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(104, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(105, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(106, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(107, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(108, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(109, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(110, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(111, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(112, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(113, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(114, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(115, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(116, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(117, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(118, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(119, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(120, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(121, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(122, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(123, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(124, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(125, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(126, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(127, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(128, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(129, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(130, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(131, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(132, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(133, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(134, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(135, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(136, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(137, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(138, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(139, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(140, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(141, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(142, 'sdfdsf', 'sfsdfsdf', 'sfdsfsdfdf', 234234324, '', '', '', '', 1),
-(143, 'bogdan', 'b0baee9d279d34fa1dfd71aadb908c3f', 'bogdan@rambler.ru', 11111, '', '', '', '', 4),
-(144, 'fdsdfsd', 'sdfsdfsdf', 'dsadsad@dfsdf.com', 2147483647, '', '', '', '', 1),
-(145, '&lt;?php echo ''ok''; ?&gt;', '4234324', '42324@.com', 2147483647, '', '', '', '', 1),
-(146, 'fsdfsdfsdf', 'sdfdsfdsfsdfsdfdsf', 'adfsdf@sdf.com', 324234234, '', '', '', '', 1),
-(147, 'dsdfsdf', 'sdfsdf', 'asdsd@sdf.com', 3243243, '', '', '', '', 1),
-(158, 'sdsdfdf', NULL, 'bog@ram.ru', 2147483647, 'sddsf', 'sdfdsf', 'sdfsdfdsfsdfsdf', 'pay_cash', NULL),
-(159, 'Dvini', NULL, 'bog@ram.ru', 2147483647, 'dsfdsf', 'sdfdsf', 'sdfdsfsdfdsf', 'pay_cash', NULL),
-(160, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(161, 'Богдан Двинин', NULL, 'bog434324@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №2: ул. Карпенко-Карого, 58', 'pay_cash', NULL),
-(162, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(163, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(164, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(165, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'sdfsdfdsf', 'sdfdsfsdf', 'Мой адрес', 'pay_cash', NULL),
-(166, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'fdggdfgf', 'sdfdsfsdf', 'sddsfdsf', 'pay_cash', NULL),
-(167, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(168, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'itself', 'pay_cash', NULL),
-(169, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'itself', 'pay_cash', NULL),
-(170, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(171, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(172, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'itself', 'pay_cash', NULL),
-(173, '34234324324234324', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(174, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(175, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(176, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(177, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(178, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(179, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №2: ул. Карпенко-Карого, 58', 'pay_cash', NULL),
-(180, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(181, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №2: ул. Карпенко-Карого, 58', 'pay_cash', NULL),
-(182, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №2: ул. Карпенко-Карого, 58', 'pay_cash', NULL),
-(183, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(184, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Киев', 'sdfdsfsdf', 'Отделение №24 (до 30 кг на одно место): ул. Белорусская, 21 (м. Лукьяновская)', 'pay_cash', NULL),
-(185, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'sfsdfdsfdsfsdf', 'sdfdsfsdf', 'sdfsdfsdfdsf', 'pay_cash', NULL),
-(186, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Бердянск', 'sdfdsfsdf', 'Отделение № 5 (до 30 кг), ул. Дюмина, 44', 'pay_cash', NULL),
-(187, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Мелитополь', 'sdfdsfsdf', 'Отделение №4: ул. Дзержинского, 114/1', 'pay_cash', NULL),
-(188, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №1: ул. Брянская, 8', 'pay_cash', NULL),
-(189, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №4 (до 30 кг на одно место): ул. Якова Новицкого, 4', 'pay_cash', NULL),
-(190, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №2: ул. Карпенко-Карого, 58', 'pay_cash', NULL),
-(191, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №4 (до 30 кг на одно место): ул. Якова Новицкого, 4', 'pay_cash', NULL),
-(192, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'itself', 'pay_cash', NULL),
-(193, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'itself', 'pay_cash', NULL),
-(194, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №2: ул. Карпенко-Карого, 58', 'pay_cash', NULL),
-(195, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'itself', 'PayPal', NULL),
-(196, 'Богдан', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'itself', 'pay_cash', NULL),
-(197, 'dfdsfsdfsdf', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'itself', 'PayPal', NULL),
-(198, 'sddsfdffdsfsdf', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'itself', 'PayPal', NULL),
-(199, 'аываываыва', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №7: ул. Космическая, 119', 'PayPal', NULL),
-(200, '111111', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'itself', 'PayPal', NULL),
-(201, '1121212', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №2: ул. Карпенко-Карого, 58', 'pay_cash', NULL),
-(202, 'dffdg df dgdf dfg', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №4 (до 30 кг на одно место): ул. Якова Новицкого, 4', 'pay_cash', NULL),
-(203, 'Богдан435345435345', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №2: ул. Карпенко-Карого, 58', 'pay_cash', NULL),
-(204, 'Богдан234234324', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №5 (до 30 кг на одно место): просп. Ленина, 91', 'pay_cash', NULL),
-(205, 'fffff', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №7: ул. Космическая, 119', 'pay_cash', NULL),
-(206, 'ggggg', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №8 (до 30 кг на одне місце): просп. Ленина, 43', 'pay_cash', NULL),
-(207, 'sdfsdfdsfsdf', NULL, 'bog@ram.ru', 2147483647, 'Запорожье', 'sdfdsfsdf', 'Отделение №7: ул. Космическая, 119', 'pay_cash', NULL);
+INSERT INTO `authorization` (`id`, `pass`, `email`) VALUES
+(215, 'b0baee9d279d34fa1dfd71aadb908c3f', 'bog@ram.ru');
 
 -- --------------------------------------------------------
 
@@ -578,7 +454,7 @@ ALTER TABLE `stock`
 -- AUTO_INCREMENT for table `authorization`
 --
 ALTER TABLE `authorization`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
 --
 -- AUTO_INCREMENT for table `categories`
 --
