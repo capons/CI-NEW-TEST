@@ -1,5 +1,10 @@
 <?php if($market_header) echo $market_header; ?>
 <!--content -->
+<?php
+if(isset($_SESSION['marker']['user'])){
+    print_r($_SESSION['marker']['user']);
+}
+?>
 <div class="well"> <!--orders filter -->
     <div class="row">
         <form onsubmit="return filter_check()" id="filter-order-form" method="post">

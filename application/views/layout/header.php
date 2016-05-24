@@ -30,7 +30,7 @@
                         <button id="s-join" class="btn b_full_container">Join</button>
                     </li>
                     <li>
-                        <button id="s-sign-in" class="btn b_full_container">Sign in</button>
+                        <button id="s-sign-in" class="btn b_full_container<?php if(isset($_SESSION['marker']['user'])){ echo ' g_l';} ?>">Sign in</button>
                     </li>
                 </ul>
             </div>

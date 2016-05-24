@@ -6,10 +6,10 @@ class Registr_model extends CI_Model{
         $query = $this->db->get('authorization');
         return $query->result_array();
     }
-    function check_login_in($login,$pass){                //check login in
-        $this->db->where('login',$login);
+    function check_login_in($email,$pass){                //check login in
+        $this->db->where('email',$email);
         $this->db->where('pass',$pass);
-        $query = $this->db->get('capons');
+        $query = $this->db->get('authorization');
         return $query->result_array();
     }
 }

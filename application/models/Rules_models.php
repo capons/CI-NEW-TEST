@@ -14,21 +14,23 @@ class Rules_models extends CI_Model
             'rules' => 'required|max_length[30]|trim|prep_for_form|encode_php_tags|md5'
         ),
     );
-
-
-
     public $login_rules = array(               //правила для формы авторизации пользывателей
         array(
-            'field' => 'name1',
-            'label' => '',
+            'field' => 's-email',
+            'label' => 'Email',
             'rules' => 'required|trim|prep_for_form|encode_php_tags'
         ),
         array(
-            'field' => 'pass1',
-            'label' => '',
+            'field' => 's-pass',
+            'label' => 'Password',
             'rules' => 'required|trim|prep_for_form|encode_php_tags'
         )
     );
+
+
+
+
+
     public $addcomments_rules = array(
         array(
             'field' => 'desc',

@@ -57,8 +57,8 @@ class Market extends CI_Controller
                     $config['cur_tag_close'] = '</a></li>';
                     $config['num_tag_open'] = '<li>';
                     $config['num_tag_close'] = '</li>';
-                    $config['first_link'] = FALSE;
-                    $config['last_link'] = FALSE;
+                    $config['first_link'] = false;
+                    $config['last_link'] = false;
                     $config['uri_segment'] = 3;
                     $page = ($this->uri->segment(3, 0)) ? $this->uri->segment(3, 0) : 0;
                     $this->pagination->initialize($config);                                        //load pagination
@@ -84,8 +84,8 @@ class Market extends CI_Controller
                     $config['cur_tag_close'] = '</a></li>';
                     $config['num_tag_open'] = '<li>';
                     $config['num_tag_close'] = '</li>';
-                    $config['first_link'] = FALSE;
-                    $config['last_link'] = FALSE;
+                    $config['first_link'] = false;
+                    $config['last_link'] = false;
                     $config['uri_segment'] = 3;
                     $page = ($this->uri->segment(3, 0)) ? $this->uri->segment(3, 0) : 0;
                     $this->pagination->initialize($config);                                        //load pagination
@@ -123,8 +123,8 @@ class Market extends CI_Controller
             $config['cur_tag_close'] = '</a></li>';
             $config['num_tag_open'] = '<li>';
             $config['num_tag_close'] = '</li>';
-            $config['first_link'] = FALSE;
-            $config['last_link'] = FALSE;
+            $config['first_link'] = false;
+            $config['last_link'] = false;
             $config['uri_segment'] = 3;
             $page = ($this->uri->segment(3, 0)) ? $this->uri->segment(3, 0) : 0;
             $this->pagination->initialize($config);                                        //load pagination
@@ -153,7 +153,7 @@ class Market extends CI_Controller
             $this->load->model('rules_models'); //load model rules
             $this->form_validation->set_rules($this->rules_models->reg_rules);
             $check = $this->form_validation->run();
-            if ($check == TRUE) {
+            if ($check == true) {
                 $email = $this->input->post('u-email');
                 $data1 = $this->registr_model->check_email($email); //check email
                 if (!empty($data1)) {
@@ -165,8 +165,6 @@ class Market extends CI_Controller
                 $this->db->insert('authorization', $add);
 
                 $this->session->set_flashdata('message', 'Congratulations you have successfully registered');
-
-                   // $this->load->view('registration_view');
                 redirect('', 'refresh');
 
             } else {
@@ -178,6 +176,26 @@ class Market extends CI_Controller
         }
     }
     public function authorization_user() {        //registr user
-        
+        if (isset($_POST['s-email'])) {
+            $this->load->model('rules_models'); //load model
+            $this->form_validation->set_rules($this->rules_models->login_rules); // load model for input validation
+            $check = $this->form_validation->run();
+            if ($check == true) {      //if validation == true
+                $email = $_POST['s-email'];
+                $pass = md5($_POST['s-pass']);
+                $this->load->model('registr_model');
+                $data = $this->registr_model->check_login_in($email, $pass);
+                if (!empty($data)) {
+                    $_SESSION['marker']['user'] = $data[0];                         //user data put into session
+                    $this->session->set_flashdata('message', 'You have successfully logged');
+                    redirect('', 'refresh');
+                } else {
+                    $this->session->set_flashdata('message', 'Invalid username or password');
+                    redirect('', 'refresh');
+                }
+            }
+        } else {
+            redirect('', 'refresh');
+        }
     }
 }
