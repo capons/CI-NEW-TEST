@@ -52,6 +52,8 @@
 </div> <!--end orders filter -->
 <!-- ./content-->
 
-
+<!--Load modal window layout -->
+<?php if($market_modal) echo $market_modal; ?>
+<!-- ./modal-->
 
 <?php if($market_footer) echo $market_footer; ?>

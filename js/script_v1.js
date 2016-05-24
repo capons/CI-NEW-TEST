@@ -27,15 +27,16 @@ var orders_manipulation = (function () {
     };
     doConstruct.prototype = {
         show_modal: function () {
-            $('.btn.btn-primary.btn-xs.user-edit').click(function(){
-                $(".modal.users").css("display","block");
-                $("#users_edit_form").css("display","block");
+            $('#s-join').click(function(){                  //show registration modal
+                $('#join-modal').modal('show');
             });
-            $(".btn.btn-primary.close-modal").click(function(){
-                $(".modal.users").css("display","none");
-                $("#users_edit_form").css("display","none");
+            if( $.trim( $('#info-body').html() ).length ) { //show information modal
+                $('#w-info').modal('show');
+            }
+            $('#s-sign-in').click(function(){               //show login modal
+                $('#sign-in-modal').modal('show');
             });
-        }
+        },
     };
     return new doConstruct;
 })();

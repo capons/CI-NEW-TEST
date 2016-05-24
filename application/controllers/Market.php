@@ -21,7 +21,7 @@ class Market extends CI_Controller
         $data['empty_data'] = 'change in the future';
         $data['market_header'] = $this->load->view('layout/header', $data, true); //load view header and send some data to header (if needed in the future)
         $data['market_footer'] = $this->load->view('layout/footer', $data, true); //load admin view footer
-
+        $data['market_modal'] = $this->load->view('layout/modal',$data, true); //load modal window layout
         if (isset($_POST['order_filter_button'])) {             //if isset filter data
             $this->load->model('rules_model');
             $this->form_validation->set_rules($this->rules_model->filter_orders_data); //load validation ruls
@@ -95,7 +95,9 @@ class Market extends CI_Controller
                     $this->load->view('market/cars', $data);             //load page view
                 }
             } else {
-                echo validation_errors();         //response to ajax  js/admin_users.js
+                echo validation_errors();
+                $this->load->view('market/cars', $data);             //load page view
+                    
             }
         } else {  //if !isset filter - load default orders data
 
@@ -144,5 +146,38 @@ class Market extends CI_Controller
                 $this->load->view('market/cars', $data);             //load page view
             }
         }
+    }
+    public function registration_user() {        //registr user
+        if (isset($_POST['u-email'])) {
+            $this->load->model('registr_model'); //load model
+            $this->load->model('rules_models'); //load model rules
+            $this->form_validation->set_rules($this->rules_models->reg_rules);
+            $check = $this->form_validation->run();
+            if ($check == TRUE) {
+                $email = $this->input->post('u-email');
+                $data1 = $this->registr_model->check_email($email); //check email
+                if (!empty($data1)) {
+                    $this->session->set_flashdata('message', 'Email already busy');
+                    redirect('', 'refresh');
+                }
+                $add['email'] = $this->input->post('u-email');
+                $add['pass'] = $this->input->post('u-pass');
+                $this->db->insert('authorization', $add);
+
+                $this->session->set_flashdata('message', 'Congratulations you have successfully registered');
+
+                   // $this->load->view('registration_view');
+                redirect('', 'refresh');
+
+            } else {
+                $this->session->set_flashdata('message', validation_errors());
+                redirect('', 'refresh');
+            }
+        } else {
+            //redirect('Market/cars', 'refresh');
+        }
+    }
+    public function authorization_user() {        //registr user
+        
     }
 }
