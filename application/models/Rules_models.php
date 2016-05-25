@@ -26,50 +26,41 @@ class Rules_models extends CI_Model
             'rules' => 'required|trim|prep_for_form|encode_php_tags'
         )
     );
-
-
-
-
-
-    public $addcomments_rules = array(
+    public $append_goods = array(     //validate add new goods data
         array(
-            'field' => 'desc',
-            'label' => '',
-            'rules' => 'required|trim|prep_for_form|encode_php_tags'
-        )
-    );
-    public $passback_rules = array(     //правила проверки полей формы вида  passback_view
-        array(
-            'field' => 'email',
-            'label' => '',
-            'rules' => 'required|trim|prep_for_form|encode_php_tags|valid_email|max_length[30]'
+            'field' => 'm_p_city',
+            'label' => 'City',
+            'rules' => 'required|max_length[60]|trim|prep_for_form|encode_php_tags'
         ),
         array(
-            'field' => 'pass',
-            'label' => '',
-            'rules' => 'required|trim|prep_for_form|encode_php_tags|min_length[5]|max_length[20]'
+            'field' => 'm_p_region',
+            'label' => 'Region',
+            'rules' => 'required|max_length[60]|trim|prep_for_form|encode_php_tags'
         ),
         array(
-            'field' => 'pass1',
-            'label' => '',
-            'rules' => 'required|trim|prep_for_form|encode_php_tags|min_length[5]|max_length[20]'
-        )
-    );
-    public $config_rules = array(       //правила проверки полей формы вида config_view
-        array(
-            'field' => 'email',
-            'label' => '',
-            'rules' => 'required|trim|prep_for_form|encode_php_tags|valid_email|max_length[30]'
+            'field' => 'm_p_brand',
+            'label' => 'Car brand',
+            'rules' => 'required|max_length[60]|trim|prep_for_form|encode_php_tags'
         ),
         array(
-            'field' => 'pass',
-            'label' => '',
-            'rules' => 'required|trim|prep_for_form|encode_php_tags|min_length[5]|max_length[20]'
+            'field' => 'm_p_model',
+            'label' => 'Car model',
+            'rules' => 'required|max_length[60]|trim|prep_for_form|encode_php_tags'
         ),
         array(
-            'field' => 'pass1',
-            'label' => '',
-            'rules' => 'required|trim|prep_for_form|encode_php_tags|min_length[5]|max_length[20]'
-        )
+            'field' => 'm_p_capacity',
+            'label' => 'Engine capacity',
+            'rules' => 'required|max_length[60]|trim|prep_for_form|encode_php_tags'
+        ),
+        array(
+            'field' => 'm_p_mileage',
+            'label' => 'Mileage',
+            'rules' => 'required|max_length[50]|trim|prep_for_form|encode_php_tags'
+        ),
+        array(
+            'field' => 'm_p_owners',
+            'label' => 'Number of owners',
+            'rules' => 'required|max_length[50]|trim|prep_for_form|encode_php_tags'
+        ),
     );
 }

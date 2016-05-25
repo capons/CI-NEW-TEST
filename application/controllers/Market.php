@@ -94,24 +94,22 @@ class Market extends CI_Controller
                     // end pagination config
                     $this->load->view('market/cars', $data);             //load page view
                 }
-            } else {
-                echo validation_errors();
-                $this->load->view('market/cars', $data);             //load page view
+            } //else {
+               // echo validation_errors();
+                //$this->load->view('market/cars', $data);             //load page view
                     
-            }
+           // }
         } else {  //if !isset filter - load default orders data
 
             //ДОБАВИТЬ ВЫВОД ЗАЯВОК
 
-            //$this->load->model('orders_model');
-
-
+            $this->load->model('product_model');
 
             //pagination config
-            $config['base_url'] = 'http://localhost/bogdan/STORE/sales/orders';
-            $config['total_rows'] = $this->db->count_all('orders');        // all database table count
-            $config['per_page'] = '10';                                    //rows in one page
-            $config['full_tag_open'] = '<nav><ul style="margin: 0px;padding-right:10px;float: right " class="pagination">'; //start teg
+            $config['base_url'] = base_url().'market/cars'; //'http://localhost/bogdan/STORE/sales/orders';
+            $config['total_rows'] = $this->db->count_all('stock');        // all database table count
+            $config['per_page'] = '6';                                    //rows in one page
+            $config['full_tag_open'] = '<nav><ul style="margin: 0px;;float: right " class="pagination">'; //start teg
             $config['full_tag_close'] = '</ul></nav>';                                                                      //end teg
             $config['prev_link'] = '&lt; Prev';
             $config['prev_tag_open'] = '<li>';
@@ -128,23 +126,14 @@ class Market extends CI_Controller
             $config['uri_segment'] = 3;
             $page = ($this->uri->segment(3, 0)) ? $this->uri->segment(3, 0) : 0;
             $this->pagination->initialize($config);                                        //load pagination
-            $data['all_orders'] = $this->db->count_all('orders');        // all database table count
+            //$data['all_orders'] = $this->db->count_all('stock');        // all database table count
 
 
-            //$data['user_orders'] = $this->orders_model->select_order($config['per_page'], $page);//send data to method select_order
-            //$data['links'] = $this->pagination->create_links();                            //variable 'links' send pagination config
+            $data['all_post'] = $this->product_model->showAll($config['per_page'], $page);//send data to method select_order
+            $data['links'] = $this->pagination->create_links();
+            $this->load->view('market/cars', $data);             //load page view
 
 
-
-            // end pagination config
-            if (isset($_GET['order'])) { //if click button view order ('#order-view-')
-                $order_id = (int)$_GET['order'];
-                $data['order_view'] = $this->orders_model->view_order($order_id);                 //send order details array to view
-                $data['order_view_product'] = $this->orders_model->view_order_product($order_id); //send all order product array to view
-                $this->load->view('market/cars', $data);             //load page view
-            } else {
-                $this->load->view('market/cars', $data);             //load page view
-            }
         }
     }
     public function registration_user() {        //registr user
@@ -194,6 +183,118 @@ class Market extends CI_Controller
                     redirect('', 'refresh');
                 }
             }
+        } else {
+            redirect('', 'refresh');
+        }
+    }
+    public function post() {        //add new product post
+        $data['empty_data'] = 'change in the future';
+        if (isset($_POST['m_p_city'])){
+
+            $this->load->model('rules_models');      //load validation ruls model
+            $this->load->model('product_model');     //load model(with database work)
+            $post_count = $this->product_model->check_user_post($_SESSION['marker']['user']['id']); //save data and return id
+            if($post_count < 3) {
+
+                //$this->form_validation->set_error_delimiters('<div class="form_error">','</div>'); //set rules to div show error
+
+                $this->form_validation->set_rules($this->rules_models->append_goods); //load validation ruls
+
+                if (empty($_FILES['uf']['name'][0])) { //if empty image input
+                    $this->form_validation->set_rules('uf', 'Goods images', 'required');
+                }
+                $check = $this->form_validation->run();  //validate form data
+                if ($check == true) {
+                    //start upload file  (input upload image manipulate)
+                    $config['upload_path'] = './stock_image/';          //image upload directory
+                    $config['allowed_types'] = 'gif|jpg|png';           //image format
+                    $config['max_size'] = '500';                        //0.5 м MAX file size
+                    $config['encrypt_name'] = true;                     //change image name
+                    $this->load->library('upload', $config);             //Load library upload
+                    //create $files variable for upload all photo in the loop (for)
+                    $files = $_FILES;
+                    $cpt = count($_FILES['uf']['name']);
+                    $all_imgname = array();
+                    for ($i = 0; $i < $cpt; $i++) {
+                        //with each iteration cycle equate the new value of the global array FILE
+                        $_FILES['uf']['name'] = $files['uf']['name'][$i];
+                        $_FILES['uf']['type'] = $files['uf']['type'][$i];
+                        $_FILES['uf']['tmp_name'] = $files['uf']['tmp_name'][$i];
+                        $_FILES['uf']['error'] = $files['uf']['error'][$i];
+                        $_FILES['uf']['size'] = $files['uf']['size'][$i];
+                        if (!$this->upload->do_upload('uf')) {  //if do_upload return FALSE - send errors to view
+                            $this->session->set_flashdata('message', 'Upload image error');
+                            redirect('', 'refresh');
+                        }
+                        $imgname = $this->upload->data('file_name');
+                        $tmp = $this->upload->data(); //variable with temp file data
+                        $all_imgname[] = $imgname; //add all image name to array (then write from a array into a string and store in the database)
+                        $config = array( //image manipulation config set rules
+                            'image_library' => 'gd2', //library name
+                            //path and name of resize foto
+                            'source_image' => $tmp['file_path'] . $tmp['file_name'],//$_SERVER['DOCUMENT_ROOT'].'/bogdan/cilessons/upload/'.$_FILES['uf']['name'],    //путь к файлу
+                            //path to save new resize foto
+                            'new_image' => './stock_image/thumbs/', //path to image new thumbs
+                            'maintain_ratio' => TRUE,                //save proportion
+                            'width' => 1000,                         //thumbs width
+                            'height' => 750
+                        );
+                        //load resize library
+                        //library emage_lib autoload
+                        $this->image_lib->initialize($config);      //load library
+                        //resize foto
+                        $this->image_lib->resize();                 //load method to resize image
+                    }
+                    //end image upload manipulation $all_imgname[] (array containes all image name)
+                    $add['city'] = $this->input->post('m_p_city');
+                    $add['region'] = $this->input->post('m_p_region');
+                    $add['car_brand'] = $this->input->post('m_p_brand');
+                    $add['car_model'] = $this->input->post('m_p_model');
+                    $add['engine_capacity'] = $this->input->post('m_p_capacity');
+                    $add['mileage'] = $this->input->post('m_p_mileage');
+                    $add['owners'] = $this->input->post('m_p_owners');
+                    $add['user_id'] = $_SESSION['marker']['user']['id'];
+
+                    //$goods_price = round((float)$this->input->post('new_goods_price'), 2); //float round 2 decimals
+
+                    $this->load->model('product_model');     //load model(with database work)
+
+
+                    //$put_goods_id - contains goods 'id' to save goods image with
+                    $put_goods_id = $this->product_model->addGoods($add); //save data and return id
+                    if (!empty($put_goods_id)) {
+                        $all_imgname_tosave = array(); //We need a multi-dimensional associative array to be stored in the database
+                        foreach ($all_imgname as $k => $v) {
+                            unset ($all_imgname[$k]);              //unset key name to set new name
+                            $new_key = 'image_name';
+                            $all_imgname_tosave[][$new_key] = $v;   //put data into array to save data in databse
+                        }
+                        $data_to_save = array();                    //array to containes all data to save in Database
+                        foreach ($all_imgname_tosave as $array) {
+                            $array['id_stock_product'] = $put_goods_id; //set key as database row name and val goods database id
+                            $data_to_save[] = $array;
+                        }
+                        $save_product_img = $this->product_model->addImage($data_to_save); //save image data
+                        if ($save_product_img == true) {
+                            $this->session->set_flashdata('message', 'Goods add successfully');
+                            redirect('', 'refresh');
+                        } else {
+                            $this->session->set_flashdata('message', 'Image load error, please try again');
+                            redirect('', 'refresh');
+                        }
+                    } else {
+                        $this->session->set_flashdata('message', 'Please try again');
+                        redirect('', 'refresh');
+                    }
+                } else {
+                    $this->session->set_flashdata('message', validation_errors());
+                    redirect('', 'refresh');
+                }
+            } else {
+                $this->session->set_flashdata('message', 'You have more than 3 post');
+                redirect('', 'refresh');
+            }
+
         } else {
             redirect('', 'refresh');
         }

@@ -1,8 +1,16 @@
 <?php if($market_header) echo $market_header; ?>
 <!--content -->
 <?php
-if(isset($_SESSION['marker']['user'])){
-    print_r($_SESSION['marker']['user']);
+if (isset($_SESSION['marker']['user'])) { // only authorization user can add new post
+    ?>
+    <div class="well">
+        <div class="row">
+            <div style="text-align: center" class="col-lg-12">
+                <button id="add_post" class="btn btn-primary">Add new post</button>
+            </div>
+        </div>
+    </div>
+    <?php
 }
 ?>
 <div class="well"> <!--orders filter -->
@@ -55,6 +63,55 @@ if(isset($_SESSION['marker']['user'])){
         </form><!-- </form>-->
     </div><!--.row -->
 </div> <!--end orders filter -->
+<div class="container-fluide">
+    <div class="col-lg-12 product-content-body">
+        <?php
+        if(!empty($all_post)) {
+            foreach ($all_post as $val) {
+                ?>
+                <div class="col-xs-4 no-padding product-presentation-body">
+                    <!--product image -->
+                    <div class="col-xs-12 product-image-body">
+                        <img src="<?php echo base_url().'stock_image/'.$val['image_name'] ?>">
+                    </div>
+                    <!--product title -->
+                    <div class="col-xs-12 product-title">
+                        <p><?php echo $val['car_brand']; ?></p>
+                    </div>
+                    <div class="product-bottom-line">
+                        <!--Border line -->
+                    </div>
+                    <div class="col-xs-12 no-padding">
+                        <div class="col-lg-6 no-padding">
+
+                            <div class="product-r-border">
+                                <!--Border line -->
+                            </div>
+                            <!--product price -->
+                            <p class="product-price"><?php echo $val['car_model']; ?></p>
+                        </div>
+                        <div style="text-align: center" class="col-lg-6">
+                            <button class="btn btn-primary btn-sm">Buy</button>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+        } else {
+            echo '<div style="text-align: center" class="alert alert-info" role="alert">';
+            echo 'Post is empty';
+            echo '</div>';
+        }
+        ?>
+    </div>
+        <div class="col-lg-12">
+            <?php
+            if(isset($links)) {
+                echo $links; //pagination
+            }
+            ?>
+        </div>
+</div>
 <!-- ./content-->
 
 <!--Load modal window layout -->

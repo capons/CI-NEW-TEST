@@ -24,6 +24,7 @@ $(document).ready(function () {
 var orders_manipulation = (function () {
     var doConstruct = function () {
         main.add_init_callback(this.show_modal);
+        main.add_init_callback(this.show_upload_img_name);
     };
     doConstruct.prototype = {
         show_modal: function () {
@@ -35,6 +36,24 @@ var orders_manipulation = (function () {
             }
             $('#s-sign-in').click(function(){               //show login modal
                 $('#sign-in-modal').modal('show');
+            });
+            $('#add_post').click(function(){               //show "#post-modal" modal
+                $('#post-modal').modal('show');
+            });
+        },
+        show_upload_img_name: function () {
+            $('#btn').click(function(){
+                $('#upfile').click();
+            });
+            $("#upfile").change(function() {
+                var files = $(this)[0].files;
+                for (var i = 0; i < files.length; i++) {
+                    if((i + 1) !== files.length) {          //If the last cell in the array - the name of the output append without ','
+                        $("#btn").append(files[i].name+',  ');
+                    } else {
+                        $("#btn").append(files[i].name);
+                    }
+                }
             });
         },
     };
